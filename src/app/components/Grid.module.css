@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  gap: 2px;
+  justify-content: end;
+  width: 70% ;
+}
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 5px;
+  color: black;
+  transition: "background-color 0.5s ease";
+}
