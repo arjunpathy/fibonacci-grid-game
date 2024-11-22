@@ -20,17 +20,18 @@ const Grid = () => {
             .then(setGameState);
     }, []);
 
-    const handleClick = (row: number, col: number) => {
+    const handleClick = (row: number, col: number, action = 'click') => {
         fetch('/api/game', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'click', row, col }),
+            body: JSON.stringify({ action, row, col }),
         })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data); setGameState(data); setTimeout(() => { setGameState({ ...data, cellsToHighlight: [] }); }, 900);
             });
     };
+
     if (!gameState) return <p>Loading...</p>;
 
     return (
@@ -60,6 +61,7 @@ const Grid = () => {
             <div style={{ width: "10%", textAlign: "left", marginLeft: "5%" }}>
                 <div style={{ marginTop: "10px" }}><span style={{ fontSize: "20px", color: "lightyellow" }}>Player 1: </span>{gameState.scores.player1}</div>
                 <div style={{ marginTop: "10px" }}><span style={{ fontSize: "20px", color: "lightpink" }}>Player 2: </span>{gameState.scores.player2}</div>
+                <button className={styles.resetBtn} onClick={() => handleClick(0, 0, 'reset')}>Reset</button>
             </div>
 
         </div>
