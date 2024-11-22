@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-export const GRID_LENGTH = 30;
-export const FIBONACCI_SEQUENCE = [1, 1, 2, 3, 5];
+const GRID_LENGTH = 30;
+const FIBONACCI_SEQUENCE = [1, 1, 2, 3, 5];
 const len = FIBONACCI_SEQUENCE.length;
 
 type GameState = {
